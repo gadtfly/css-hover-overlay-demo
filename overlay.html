@@ -14,15 +14,16 @@
         display: flex;              /* Use "flexible box" model */
         justify-content: center;    /* Center contents horizontally */
         align-items: center;        /* Center contents vertically */
+        pointer-events: none;       /* Transparent to mouse events */
       }
-      .controls:hover {
+      .controls a {
+        pointer-events: auto;       /* Visible to mouse events */
+      }
+      .thumbnail:hover .controls {  /* Hover detection moved to parent */
         opacity: 0.5;               /* Fade in on mouse-hover */
       }
-      .main-link {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        z-index: -1;                /* Position "behind" sibling elements */
+      .content img {
+        display: block;             /* Flow like a block rather than like text */
       }
 
       /* Purely cosmetic things */
@@ -30,7 +31,7 @@
         background-color: black;
         transition: 0.5s;
       }
-      .controls:hover {
+      .thumbnail:hover .controls {
         transition: 0.5s;
       }
       .controls a {
@@ -40,10 +41,12 @@
   </head>
   <body>
     <div class='thumbnail'>
-      <img src='https://placehold.it/200x200'>
-      <div class='controls'>
-        <a href='#main' class='main-link'>
+      <div class='content'>
+        <a href='#main'>
+          <img src='https://placehold.it/200x200'>
         </a>
+      </div>
+      <div class='controls'>
         <a href='#1'>
           <img src='https://placehold.it/20x20'></img>
         </a>
