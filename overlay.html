@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <style>
+      .thumbnail {
+        position: relative;         /* Set up as basis for {position: absolute;} on child */
+        display: inline-flex;       /* Shrink to contents */
+      }
+      .overlay {
+        position: absolute;         /* Position relative to parent */
+        top: 0; left: 0;            /* Position on top of parent */
+        width: 100%; height: 100%;  /* Fill parent */
+        opacity: 0;                 /* Start out totally transparent */
+        display: flex;              /* Use "flexible box" model */
+        justify-content: center;    /* Center contents horizontally */
+        align-items: center;        /* Center contents vertically */
+      }
+      .overlay:hover {
+        opacity: 0.5;               /* Fade in on mouse-hover */
+      }
+
+      /* Purely cosmetic things */
+      .overlay {
+        background-color: black;
+        transition: 0.5s;
+      }
+      .overlay:hover {
+        transition: 0.5s;
+      }
+      .overlay a {
+        margin: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class='thumbnail'>
+      <img src='https://placehold.it/200x200'>
+      <div class='overlay'>
+        <a href='#'>
+          <img src='https://placehold.it/20x20'></img>
+        </a>
+        <a href='#'>
+          <img src='https://placehold.it/20x20'></img>
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
