@@ -18,6 +18,12 @@
       .overlay:hover {
         opacity: 0.5;               /* Fade in on mouse-hover */
       }
+      .main-link {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: -1;                /* Position "behind" sibling elements */
+      }
 
       /* Purely cosmetic things */
       .overlay {
@@ -36,10 +42,12 @@
     <div class='thumbnail'>
       <img src='https://placehold.it/200x200'>
       <div class='overlay'>
-        <a href='#'>
+        <a href='#main' class='main-link'>
+        </a>
+        <a href='#1'>
           <img src='https://placehold.it/20x20'></img>
         </a>
-        <a href='#'>
+        <a href='#2'>
           <img src='https://placehold.it/20x20'></img>
         </a>
       </div>
