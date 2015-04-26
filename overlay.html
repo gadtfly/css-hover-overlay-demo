@@ -6,7 +6,7 @@
         position: relative;         /* Set up as basis for {position: absolute;} on child */
         display: inline-flex;       /* Shrink to contents */
       }
-      .overlay {
+      .controls {
         position: absolute;         /* Position relative to parent */
         top: 0; left: 0;            /* Position on top of parent */
         width: 100%; height: 100%;  /* Fill parent */
@@ -15,7 +15,7 @@
         justify-content: center;    /* Center contents horizontally */
         align-items: center;        /* Center contents vertically */
       }
-      .overlay:hover {
+      .controls:hover {
         opacity: 0.5;               /* Fade in on mouse-hover */
       }
       .main-link {
@@ -26,14 +26,14 @@
       }
 
       /* Purely cosmetic things */
-      .overlay {
+      .controls {
         background-color: black;
         transition: 0.5s;
       }
-      .overlay:hover {
+      .controls:hover {
         transition: 0.5s;
       }
-      .overlay a {
+      .controls a {
         margin: 5px;
       }
     </style>
@@ -41,7 +41,7 @@
   <body>
     <div class='thumbnail'>
       <img src='https://placehold.it/200x200'>
-      <div class='overlay'>
+      <div class='controls'>
         <a href='#main' class='main-link'>
         </a>
         <a href='#1'>
