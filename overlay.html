@@ -2,25 +2,43 @@
 <html>
   <head>
     <style>
+      /* NB: not at all a safe assumption */
+      /* @media query for "hover-capable" on the way, but not yet widely implemented */
+      @media (min-width: 992px) {
+        .thumbnail {
+          position: relative;         /* Set up as basis for {position: absolute;} on child */
+        }
+        .controls {
+          position: absolute;         /* Position relative to parent */
+          top: 0; left: 0;            /* Position on top of parent */
+          width: 100%; height: 100%;  /* Fill parent */
+          opacity: 0;                 /* Start out totally transparent */
+          pointer-events: none;       /* Transparent to mouse events */
+        }
+        .controls a {
+          pointer-events: auto;       /* Visible to mouse events */
+        }
+        .thumbnail:hover .controls {  /* Hover detection moved to parent */
+          opacity: 0.5;               /* Fade in on mouse-hover */
+        }
+
+        /* Purely cosmetic things */
+        .controls {
+          transition: 0.5s;
+        }
+        .thumbnail:hover .controls {
+          transition: 0.5s;
+        }
+      }
+
       .thumbnail {
-        position: relative;         /* Set up as basis for {position: absolute;} on child */
         display: inline-flex;       /* Shrink to contents */
+        flex-direction: column;     /* Position .content above .controls  */
       }
       .controls {
-        position: absolute;         /* Position relative to parent */
-        top: 0; left: 0;            /* Position on top of parent */
-        width: 100%; height: 100%;  /* Fill parent */
-        opacity: 0;                 /* Start out totally transparent */
         display: flex;              /* Use "flexible box" model */
         justify-content: center;    /* Center contents horizontally */
         align-items: center;        /* Center contents vertically */
-        pointer-events: none;       /* Transparent to mouse events */
-      }
-      .controls a {
-        pointer-events: auto;       /* Visible to mouse events */
-      }
-      .thumbnail:hover .controls {  /* Hover detection moved to parent */
-        opacity: 0.5;               /* Fade in on mouse-hover */
       }
       .content img {
         display: block;             /* Flow like a block rather than like text */
@@ -29,10 +47,6 @@
       /* Purely cosmetic things */
       .controls {
         background-color: black;
-        transition: 0.5s;
-      }
-      .thumbnail:hover .controls {
-        transition: 0.5s;
       }
       .controls a {
         margin: 5px;
