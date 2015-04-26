@@ -3,19 +3,19 @@
   <head>
     <style>
       .thumbnail {
-        display: inline-flex;       /* Shrink to contents */
-        flex-direction: column;     /* Position .content above .controls */
+        display: inline-flex;       /* Use "flexible box" model, and shrink to contents */
+        flex-direction: column;     /* Place contents vertically and in order */
       }
       .controls {
         display: flex;              /* Use "flexible box" model */
         justify-content: center;    /* Center contents horizontally */
         align-items: center;        /* Center contents vertically */
       }
-      .content img {
-        display: block;             /* Flow like a block rather than like text */
-      }
 
       /* Purely cosmetic things */
+      .content img {
+        display: block;             /* Flow like a block rather than like text (killing extra whitespace) */
+      }
       .controls {
         background-color: black;
       }
@@ -24,10 +24,10 @@
       }
       
       
-      /* If tablet-ish-or-smaller screen size (not at all a safe assumption!!! [0]): */
-      /* Extend existing CSS to overlay .controls over .content */
-      /* Make visible by hovering. */
-      /*   [0] @media query for "hover-capable" on the way, but not yet widely implemented */
+      /* If tablet-ish-or-smaller screen size (not at all a safe assumption!!! [0]):
+         * [0] @media query for "hover-capable" on the way, but not yet widely implemented
+       * Extend existing CSS to overlay .controls over .content
+       * Make visible by hovering. */
       @media (min-width: 992px) {
         .thumbnail {
           position: relative;         /* Set up as basis for {position: absolute;} on child */
