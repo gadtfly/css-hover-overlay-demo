@@ -2,6 +2,7 @@
 <html>
   <head>
     <style>
+      /* Default styling: .content above .controls */
       .thumbnail {
         display: inline-flex;       /* Use "flexible box" model, and shrink to contents */
         flex-direction: column;     /* Place contents vertically and in order */
@@ -24,10 +25,11 @@
       }
       
       
-      /* If tablet-ish-or-smaller screen size (not at all a safe assumption!!! [0]):
-         * [0] @media query for "hover-capable" on the way, but not yet widely implemented
-       * Extend existing CSS to overlay .controls over .content
-       * Make visible by hovering. */
+      /* If tablet-ish-or-smaller screen size (not at all a safe assumption):
+         * @media query for "hover-capable" on the way, but not yet widely implemented
+       * Extend existing styling: overlay .controls on top of .content
+       * Make visible by hovering
+       * Link on .content still clickable through overlay */
       @media (min-width: 992px) {
         .thumbnail {
           position: relative;         /* Set up as basis for {position: absolute;} on child */
@@ -40,10 +42,10 @@
           pointer-events: none;       /* Transparent to mouse events */
         }
         .controls a {
-          pointer-events: auto;       /* Visible to mouse events */
+          pointer-events: auto;       /* Visible to mouse events (actual controls only) */
         }
-        .thumbnail:hover .controls {  /* Hover detection on parent */
-          opacity: 0.5;               /* Fade in child on mouse-hover */
+        .thumbnail:hover .controls {
+          opacity: 0.5;               /* Fade in child on mouse-hover over parent */
         }
 
         /* Purely cosmetic things */
