@@ -2,38 +2,9 @@
 <html>
   <head>
     <style>
-      /* NB: not at all a safe assumption */
-      /* @media query for "hover-capable" on the way, but not yet widely implemented */
-      @media (min-width: 992px) {
-        .thumbnail {
-          position: relative;         /* Set up as basis for {position: absolute;} on child */
-        }
-        .controls {
-          position: absolute;         /* Position relative to parent */
-          top: 0; left: 0;            /* Position on top of parent */
-          width: 100%; height: 100%;  /* Fill parent */
-          opacity: 0;                 /* Start out totally transparent */
-          pointer-events: none;       /* Transparent to mouse events */
-        }
-        .controls a {
-          pointer-events: auto;       /* Visible to mouse events */
-        }
-        .thumbnail:hover .controls {  /* Hover detection moved to parent */
-          opacity: 0.5;               /* Fade in on mouse-hover */
-        }
-
-        /* Purely cosmetic things */
-        .controls {
-          transition: 0.5s;
-        }
-        .thumbnail:hover .controls {
-          transition: 0.5s;
-        }
-      }
-
       .thumbnail {
         display: inline-flex;       /* Shrink to contents */
-        flex-direction: column;     /* Position .content above .controls  */
+        flex-direction: column;     /* Position .content above .controls */
       }
       .controls {
         display: flex;              /* Use "flexible box" model */
@@ -50,6 +21,38 @@
       }
       .controls a {
         margin: 5px;
+      }
+      
+      
+      /* If tablet-ish-or-smaller screen size (not at all a safe assumption!!! [0]): */
+      /* Extend existing CSS to overlay .controls over .content */
+      /* Make visible by hovering. */
+      /*   [0] @media query for "hover-capable" on the way, but not yet widely implemented */
+      @media (min-width: 992px) {
+        .thumbnail {
+          position: relative;         /* Set up as basis for {position: absolute;} on child */
+        }
+        .controls {
+          position: absolute;         /* Position relative to parent */
+          top: 0; left: 0;            /* Position on top of parent */
+          width: 100%; height: 100%;  /* Fill parent */
+          opacity: 0;                 /* Start out totally transparent */
+          pointer-events: none;       /* Transparent to mouse events */
+        }
+        .controls a {
+          pointer-events: auto;       /* Visible to mouse events */
+        }
+        .thumbnail:hover .controls {  /* Hover detection on parent */
+          opacity: 0.5;               /* Fade in child on mouse-hover */
+        }
+
+        /* Purely cosmetic things */
+        .controls {
+          transition: 0.5s;
+        }
+        .thumbnail:hover .controls {
+          transition: 0.5s;
+        }
       }
     </style>
   </head>
